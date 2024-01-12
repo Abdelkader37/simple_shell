@@ -1,4 +1,5 @@
 #include "main.h"
+#include "main.h"
 /**
  * _strup - Duplicates a string.
  * @str: The input string to be duplicated.
@@ -43,7 +44,7 @@ size_t _strlen(const char *str)
  * @s1: The first string to be compared.
  * @s2: The second string to be compared.
  *
- * Return: An integer 
+ * Return: An integer
  */
 int str_comp(char *s1, char *s2)
 {
@@ -95,4 +96,3 @@ void freetool(char **arr)
 
 	free(arr);
 }
-
