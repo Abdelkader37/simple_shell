@@ -59,39 +59,62 @@ char *_strcat(char *dest, const char *src)
 }
 
 /**
- * path_search - Searches for the full path of a command in the PATH directories.
- * @cmd: The command to search.
+ * path_search - Searches for the full path of a command in the system.
+ * @cmd: The command to search for.
  *
- * Return: If found, returns a duplicated string containing the full path;
+ * Return: If found, returns a dynamically allocated string containing the full path;
  *         otherwise, returns NULL.
  */
 char *path_search(char *cmd)
 {
-	char *dir, *_path, *all_cmd;
 	struct stat st;
+	char *_path, *result;
 	int i;
 
 	if (cmd == NULL)
 	{
-	return (NULL);
+		return (NULL);
 	}
+
 	for (i = 0; cmd[i]; i++)
 	{
 	if (cmd[i] == '/')
 	{
 	if (stat(cmd, &st) == 0)
 	{
-	return (_strup(cmd));
+		return (_strup(cmd));
 	}
-	return (NULL);
+ 	return (NULL);
 	}
 	}
+
 	_path = _getenv("PATH");
 	if (_path == NULL)
 	{
 	return (NULL);
 	}
+
+	result = search_in_path(cmd, _path);
+
+	free(_path);
+	return (result);
+}
+
+/**
+ * search_in_path - Searches for a command in each directory specified in the PATH.
+ * @cmd: The command to search for.
+ * @_path: The PATH variable containing directories.
+ *
+ * Return: If found, returns a dynamically allocated string containing the full path;
+ *         otherwise, returns NULL.
+ */
+char *search_in_path(char *cmd, char *_path)
+{
+	char *dir, *all_cmd;
+	struct stat st;
+
 	dir = strtok(_path, ":");
+
 	while (dir != NULL)
 	{
 	all_cmd = malloc(strlen(dir) + strlen(cmd) + 2);
@@ -100,16 +123,15 @@ char *path_search(char *cmd)
 	_strcpy(all_cmd, dir);
 	_strcat(all_cmd, "/");
 	_strcat(all_cmd, cmd);
-		if (stat(all_cmd, &st) == 0)
-		{
-		free(_path);
-		return (all_cmd);
-		}
-		free(all_cmd);
+	if (stat(all_cmd, &st) == 0)
+	{
+	return (all_cmd);
+	}
+	free(all_cmd);
 	dir = strtok(NULL, ":");
 	}
 	}
-	free(_path);
+
 	return (NULL);
 }
 
