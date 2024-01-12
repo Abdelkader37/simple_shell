@@ -36,6 +36,6 @@ void _break(char**input, char **argv, int *status, int i) ;
 void input_built(char **input, char **argv, int *status, int i);
 int non_input(char *cmd);
 int int_to_str2(char *str);
-
+char *search_in_path(char *cmd, char *_path);
 
 #endif
