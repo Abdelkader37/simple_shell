@@ -13,14 +13,14 @@ char *_getenv(char *name)
 
 	 for (i = 0; environ[i]; i++)
 	{
-	dup = _strduplicate(environ[i]); /* Use a more descriptive function name like _strduplicate */
+	dup = _strup(environ[i]); 
 	str1 = strtok(dup, "=");
 	if (str1 != NULL && str_comp(str1, name) == 0)
 	{
 	str2 = strtok(NULL, "\n");
 	if (str2 != NULL)
 		{
-		inv = _strduplicate(str2); /* Use a more descriptive function name like _strduplicate */
+		inv = _strup(str2); 
 		free(dup);
 		return (inv);
 		}
@@ -82,7 +82,7 @@ char *path_search(char *cmd)
 	{
 	if (stat(cmd, &st) == 0)
 	{
-	return (_strduplicate(cmd))
+	return (_strup(cmd));
 	}
 	return (NULL);
 	}
@@ -101,7 +101,7 @@ char *path_search(char *cmd)
 	all_cmd = malloc(strlen(dir) + strlen(cmd) + 2);
 	if (all_cmd != NULL)
 	{
-	_strcpy(all_cmd, dir); /* Use a more descriptive function name like _strcpy */
+	_strcpy(all_cmd, dir);
 	_strcat(all_cmd, "/");
 	_strcat(all_cmd, cmd);
 		if (stat(all_cmd, &st) == 0)
@@ -146,7 +146,7 @@ char *int_to_str(int n)
 
 	reverse(s, i);
 
-	result = _strduplicate(s);
+	result = _strup(s);
 
 	return (result);
 }
