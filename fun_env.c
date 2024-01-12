@@ -7,7 +7,7 @@
  */
 void _perror(char *nm, char *cmd, int i)
 {
- 	char *idx, error[] = ": not found\n";
+	char *idx, error[] = ": not found\n";
 
 	idx = int_to_str(i);
 
@@ -16,7 +16,7 @@ void _perror(char *nm, char *cmd, int i)
 	write(STDERR_FILENO, idx, _strlen(idx));
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, cmd, _strlen(cmd));
-	write(STDERR_FILENO, error, _strlen(error)); 
+	write(STDERR_FILENO, error, _strlen(error));
 	free(idx);
 }
 
@@ -82,7 +82,7 @@ void _perror2(char **argv, int i, char *error, char *input1)
 }
 
 /**
- * _break - Handles the "exit" command, allowing the shell to exit with a specified status.
+ * _break - Handles the "exit" command.
  * @input: Array of strings representing the input command.
  * @argv: Array of strings representing the arguments.
  * @status: Pointer to an integer representing the shell status.
