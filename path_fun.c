@@ -75,7 +75,6 @@ char *path_search(char *cmd)
 	{
 	return (NULL);
 	}
-
 	for (i = 0; cmd[i]; i++)
 	{
 	if (cmd[i] == '/')
@@ -87,15 +86,12 @@ char *path_search(char *cmd)
 	return (NULL);
 	}
 	}
-
 	_path = _getenv("PATH");
 	if (_path == NULL)
 	{
 	return (NULL);
 	}
-
 	dir = strtok(_path, ":");
-
 	while (dir != NULL)
 	{
 	all_cmd = malloc(strlen(dir) + strlen(cmd) + 2);
@@ -113,7 +109,6 @@ char *path_search(char *cmd)
 	dir = strtok(NULL, ":");
 	}
 	}
-
 	free(_path);
 	return (NULL);
 }

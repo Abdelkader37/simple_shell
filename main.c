@@ -19,19 +19,22 @@ int main(int ac, char **argv)
 	input = customReadInput();
 	if (input == NULL)
 	{
-		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, "\n", 1);
-		return (status);
+	if (isatty(STDIN_FILENO))
+	write(STDOUT_FILENO, "\n", 1);
+	return (status);
 	}
 	i++;
 
 	comnd = stringTokenizer(input);
 	if (comnd == NULL)
-	{
 	continue;
+	else if (non_input(comnd[0]))
+	{
+	input_built(comnd, argv, &status, i);
 	}
 	else
+	{
 	status = execute_command(comnd, argv, i);
 	}
+	}
 }
-
