@@ -22,12 +22,12 @@ char *_getenv(char *name)
 		{
 		inv = _strduplicate(str2); /* Use a more descriptive function name like _strduplicate */
 		free(dup);
-		return inv;
+		return (inv);
 		}
 	}
 	free(dup);
 	}
-	return NULL;
+	return (NULL);
 }
 
 /**
@@ -55,7 +55,7 @@ char *_strcat(char *dest, const char *src)
 
 	*dest = '\0';
 
-	return original_dest;
+	return (original_dest);
 }
 
 /**
@@ -73,7 +73,7 @@ char *path_search(char *cmd)
 
 	if (cmd == NULL)
 	{
-	return NULL;
+	return (NULL);
 	}
 
 	for (i = 0; cmd[i]; i++)
@@ -82,16 +82,16 @@ char *path_search(char *cmd)
 	{
 	if (stat(cmd, &st) == 0)
 	{
-	return _strduplicate(cmd); /* Use a more descriptive function name like _strduplicate */
+	return (_strduplicate(cmd))
 	}
-	return NULL;
+	return (NULL);
 	}
 	}
 
 	_path = _getenv("PATH");
 	if (_path == NULL)
 	{
-	return NULL;
+	return (NULL);
 	}
 
 	dir = strtok(_path, ":");
@@ -107,7 +107,7 @@ char *path_search(char *cmd)
 		if (stat(all_cmd, &st) == 0)
 		{
 		free(_path);
-		return all_cmd;
+		return (all_cmd);
 		}
 		free(all_cmd);
 	dir = strtok(NULL, ":");
@@ -115,7 +115,7 @@ char *path_search(char *cmd)
 	}
 
 	free(_path);
-	return NULL;
+	return (NULL);
 }
 
 /**
@@ -146,27 +146,9 @@ char *int_to_str(int n)
 
 	reverse(s, i);
 
-	result = _strduplicate(s); /* Use a more descriptive function name like _strduplicate */
+	result = _strduplicate(s);
 
-	return result;
-}
-
-/**
- * reverse - Reverses a string in-place.
- * @s: The string to be reversed.
- * @len: The length of the string.
- */
-void reverse(char *s, int len)
-{
-    int i, j;
-    char temp;
-
-    for (i = 0, j = len - 1; i < j; i++, j--)
-    {
-        temp = s[i];
-        s[i] = s[j];
-        s[j] = temp;
-    }
+	return (result);
 }
 
 /**
