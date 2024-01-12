@@ -6,30 +6,23 @@
  * Return: A dynamically allocated string containing a duplicate of the input string.
  *         Returns (NULL) if the input string is NULL or if memory allocation fails.
  */
-char* _strup(const char* str)
+char *_strup(const char *str)
 {
-	/*
-	* Duplicates the input string using dynamic memory allocation.
-	* Returns the duplicated string or NULL if an error occurs.
-	*/
-	char* duplicate;
+
+	char *duplicate;
 	size_t length;
 
 	if (str == NULL)
-	{
-	 return NULL; 
-	}
+	return NULL;
 
-	length = _strlen(str) + 1; 
+	length = _strlen(str) + 1;
 
-	duplicate = (char*)malloc(length);
+	duplicate = (char *)malloc(length);
 
 	if (duplicate != NULL)
-	{
 	_strcpy(duplicate, str);
-	}
 
-	return duplicate;
+	return (duplicate);
 }
 
 /*
@@ -46,10 +39,8 @@ size_t _strlen(const char *str)
 	*/
 	size_t length = 0;
 	while (str[length] != '\0')
-	{
 	length++;
-	}
-	return length;
+	return (length);
 }
 
 /*
@@ -62,16 +53,16 @@ size_t _strlen(const char *str)
  */
 int str_comp(char *s1, char *s2)
 {
-	/*
-	* Compares two strings character by character.
-	* Returns an integer representing the result of the comparison.
-	*/
-	while (*s1 && (*s1 == *s2))
-	{
-	s1++;
-	s2++;
-	}
-	return (int)(*s1) - (int)(*s2);
+/*
+* Compares two strings character by character.
+* Returns an integer representing the result of the comparison.
+*/
+    while (*s1 && (*s1 == *s2))
+    {
+        s1++;
+        s2++;
+    }
+    return ((int)(*s1) - (int)(*s2));
 }
 
 /*
@@ -81,22 +72,17 @@ int str_comp(char *s1, char *s2)
  *
  * Return: A pointer to the destination buffer.
  */
-char* _strcpy(char* dest, const char* src)
+char *_strcpy(char *dest, const char *src)
 {
-	/*
-	* Copies the source string to the destination buffer.
-	* Returns a pointer to the destination buffer.
-	*/
-	char* originalDest;
 
-	originalDest = dest;
+	char *originalDest = dest;
 
 	while ((*dest++ = *src++) != '\0')
 	{
-	/* Copy characters from src to dest until null terminator */
+  
 	}
 
-	return originalDest;
+	return (originalDest);
 }
 
 /*
@@ -105,23 +91,17 @@ char* _strcpy(char* dest, const char* src)
  */
 void freetool(char **arr)
 {
-    /*
-     * Frees memory allocated for an array of strings.
-     * Sets each element of the array to NULL after freeing.
-     */
-    int i;
 
-    if (arr == NULL)
-    {
-        return;
-    }
+	int i;
+	if (arr == NULL)
+	return;
 
-    for (i = 0; arr[i]; i++)
-    {
-        free(arr[i]);
-        arr[i] = NULL;
-    }
+	for (i = 0; arr[i]; i++)
+	{
+	free(arr[i]);
+	arr[i] = NULL;
+	}
 
-    free(arr);
+	free(arr);
 }
 
