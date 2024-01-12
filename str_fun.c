@@ -34,6 +34,7 @@ char *_strup(const char *str)
 size_t _strlen(const char *str)
 {
 	size_t length = 0;
+
 	while (str[length] != '\0')
 	{
 	length++;
@@ -87,6 +88,7 @@ void freetool(char **arr)
 {
 
 	int i;
+
 	if (arr == NULL)
 	return;
 
