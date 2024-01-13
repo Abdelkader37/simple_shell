@@ -32,7 +32,7 @@ char *_strcat(char *dest, const char *src)
  * path_search - Searches for the full path of a command in the system.
  * @cmd: The command to search for.
  *
- * Return: If found, returns a dynamically allocated string containing the full path;
+ * Return: If found, returns a dynamically allocated string  the full path;
  *         otherwise, returns NULL.
  */
 char *path_search(char *cmd)
