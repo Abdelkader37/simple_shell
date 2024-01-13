@@ -1,5 +1,5 @@
 #include "main.h"
-/*
+/**
  * customReadInput - Reads a line of input from the user.
  *
  * Return: A dynamically allocated string containing the input line.
@@ -28,7 +28,7 @@ char *customReadInput(void)
 	return (input);
 }
 
-/*
+/**
  * countTokens - Counts the number of tokens in a string.
  * @input: The input string to be tokenized.
  *
@@ -55,7 +55,7 @@ int countTokens(char *input)
 	return (tokenCount);
 }
 
-/*
+/**
  * tokenizeString - Tokenizes a string into an array of strings.
  * @input: The input string to be tokenized.
  * @tokenCount: The number of tokens in the input string.
@@ -87,7 +87,7 @@ char **tokenizeString(char *input, int tokenCount)
 	return (cmd);
 }
 
-/*
+/**
  * stringTokenizer - Tokenizes a string into an array of strings.
  * @input: The input string to be tokenized.
  *
@@ -122,7 +122,7 @@ char **stringTokenizer(char *input)
 	return (cmd);
 }
 
-/*
+/**
  * execute_command - Executes a command with arguments.
  * @comnd: An array of strings representing the command and its arguments.
  * @argv: An array of strings representing the command-line arguments.
