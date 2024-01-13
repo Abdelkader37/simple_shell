@@ -1,34 +1,4 @@
 #include "main.h"
-/**
- * _getenv - Retrieves the value of an environment variable.
- * @name: The name of the environment variable.
- *
- * Return: If found, returns a duplicated string containing the variable value;
- *         otherwise, returns NULL.
- */
-char *_getenv(char *name)
-{
-	char *dup, *str1, *str2, *inv;
-	int i;
-
-	 for (i = 0; environ[i]; i++)
-	{
-	dup = _strup(environ[i]); 
-	str1 = strtok(dup, "=");
-	if (str1 != NULL && str_comp(str1, name) == 0)
-	{
-	str2 = strtok(NULL, "\n");
-	if (str2 != NULL)
-		{
-		inv = _strup(str2); 
-		free(dup);
-		return (inv);
-		}
-	}
-	free(dup);
-	}
-	return (NULL);
-}
 
 /**
  * _strcat - Concatenates two strings.
@@ -84,7 +54,7 @@ char *path_search(char *cmd)
 	{
 		return (_strup(cmd));
 	}
- 	return (NULL);
+	return (NULL);
 	}
 	}
 
@@ -101,11 +71,11 @@ char *path_search(char *cmd)
 }
 
 /**
- * search_in_path - Searches for a command in each directory specified in the PATH.
+ * search_in_path - Searches for a command in each directory in the PATH.
  * @cmd: The command to search for.
  * @_path: The PATH variable containing directories.
  *
- * Return: If found, returns a dynamically allocated string containing the full path;
+ * Return: returns a dynamically allocated string containing full path;
  *         otherwise, returns NULL.
  */
 char *search_in_path(char *cmd, char *_path)
@@ -132,7 +102,7 @@ char *search_in_path(char *cmd, char *_path)
 	}
 	}
 
-	return (NULL);
+		return (NULL);
 }
 
 /**
@@ -152,9 +122,10 @@ char *int_to_str(int n)
 	n = -n;
 
 	do
-	{
+
 	s[i++] = n % 10 + '0';
-	} while ((n /= 10) > 0);
+
+	while ((n /= 10) > 0);
 
 	if (sign < 0)
 	s[i++] = '-';
