@@ -103,6 +103,7 @@ void _break(char **input, char **argv, int *status, int i)
 	{
 		_perror2(argv, i, error, input[1]);
 		freetool(input);
+		(*status) = 2;
 		return;
 	}
 	}
